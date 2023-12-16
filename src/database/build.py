@@ -3,8 +3,6 @@ Script to build the database and populate it with data from Notion
 
 """
 
-import os
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
