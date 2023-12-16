@@ -53,16 +53,16 @@ class FermentationProcess(Base):
     fermentor_id = Column(Integer, ForeignKey('fermentors.id'))
     fermentor = relationship('Fermentor', back_populates='process_list')
 
-    reading_list = relationship("ProcessReading", back_populates="process")
+    sample = relationship("FermentationSample", uselist=False, back_populates="process")
 
 
-class ProcessReading(Base):
-    __tablename__ = "process_reading"
+class FermentationSample(Base):
+    __tablename__ = "fermentation_samples"
 
     id = Column(Integer, primary_key=True)
     timestamp = Column(String)
     url = Column(String)
 
-    process_id = Column(ForeignKey('fermentation_processes.id'))
-    process = relationship("FermentationProcess", back_populates='reading_list')
+    process_id = Column(ForeignKey('fermentation_processes.id'), unique=True)
+    process = relationship("FermentationProcess", back_populates='sample')
 
