@@ -1,0 +1,7 @@
+name: ferment
+
+dependencies:
+  - python=3.8
+  - requests
+  - pandas
+  - sqlalchemy
